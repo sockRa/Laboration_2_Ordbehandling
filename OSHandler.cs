@@ -5,16 +5,26 @@ namespace Laboration_2_Ordbehandling
 {
 	public class OSHandler
 	{
-		private SaveFileDialog saveFileDialog1;
+		private SaveFileDialog sDialog;
+		private OpenFileDialog oDialog;
 
-		public OSHandler(SaveFileDialog saveFileDialog1)
+		public OSHandler()
 		{
-			this.saveFileDialog1 = saveFileDialog1;
+			sDialog = new SaveFileDialog();
+			oDialog = new OpenFileDialog();
 		}
 
 		internal void SaveChanges()
 		{
-			throw new NotImplementedException();
+		}
+
+		internal void OpenTextFile()
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+			}
 		}
 	}
 }

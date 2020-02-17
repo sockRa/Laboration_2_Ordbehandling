@@ -21,14 +21,14 @@ namespace Laboration_2_Ordbehandling
 		//Handels operations that write/read from the system
 		private readonly OSHandler osHandler;
 
-		public static bool FileHaveBeenModified { get; set; }
+		public bool FileHaveBeenModified { get; set; }
 
 		public Main_Form()
 		{
 			InitializeComponent();
 			wHandler = new WindowHandler(this);
-			sHandler = new StringHandler(Rtb_Main);
-			osHandler = new OSHandler(saveFileDialog1);
+			sHandler = new StringHandler(Rtb_Main, this);
+			osHandler = new OSHandler();
 
 			FileHaveBeenModified = false;
 
@@ -95,9 +95,7 @@ namespace Laboration_2_Ordbehandling
 		{
 			//If text have been modified, give the user a chance to save it's work
 			ShowSaveDialogIfModified();
-
-			OpenFileDialog dialog = new OpenFileDialog();
-			dialog.ShowDialog();
+			osHandler.OpenTextFile();
 		}
 	}
 }

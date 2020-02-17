@@ -37,8 +37,6 @@
 			this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Rtb_Main = new System.Windows.Forms.RichTextBox();
-			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -112,10 +110,6 @@
 			this.Rtb_Main.Text = "";
 			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
 			// 
-			// openFileDialog1
-			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
-			// 
 			// Main_Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,8 +138,6 @@
 		private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
 		private System.Windows.Forms.RichTextBox Rtb_Main;
-		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 	}
 }
 
