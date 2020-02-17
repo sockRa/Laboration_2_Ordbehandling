@@ -13,7 +13,7 @@ namespace Laboration_2_Ordbehandling
 
 		internal void AppendAsterix()
 		{
-			MainWindow.Text += "*";
+			MainWindow.Text = "*" + MainWindow.Text;
 		}
 	}
 }

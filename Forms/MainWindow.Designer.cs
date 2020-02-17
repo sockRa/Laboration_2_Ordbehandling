@@ -48,7 +48,7 @@
             this.toolStripDropDownButton1});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(601, 25);
 			this.toolStrip1.TabIndex = 0;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -101,9 +101,10 @@
 			// 
 			this.Rtb_Main.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Rtb_Main.EnableAutoDragDrop = true;
+			this.Rtb_Main.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Rtb_Main.Location = new System.Drawing.Point(0, 25);
 			this.Rtb_Main.Name = "Rtb_Main";
-			this.Rtb_Main.Size = new System.Drawing.Size(800, 742);
+			this.Rtb_Main.Size = new System.Drawing.Size(601, 464);
 			this.Rtb_Main.TabIndex = 2;
 			this.Rtb_Main.TabStop = false;
 			this.Rtb_Main.Text = "";
@@ -117,11 +118,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 767);
+			this.ClientSize = new System.Drawing.Size(601, 489);
 			this.Controls.Add(this.Rtb_Main);
 			this.Controls.Add(this.toolStrip1);
+			this.MinimumSize = new System.Drawing.Size(601, 464);
 			this.Name = "Main_Form";
-			this.Text = "dok1.txt";
+			this.Text = "dok1.txt - NotPad";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
