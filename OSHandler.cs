@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
 {
-	internal class OSHandler
+	public class OSHandler
 	{
 		private SaveFileDialog saveFileDialog1;
 
@@ -12,8 +12,9 @@ namespace Laboration_2_Ordbehandling
 			this.saveFileDialog1 = saveFileDialog1;
 		}
 
-		internal void SaveFile()
+		internal void SaveChanges()
 		{
+			throw new NotImplementedException();
 		}
 	}
 }
