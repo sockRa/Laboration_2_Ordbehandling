@@ -2,7 +2,7 @@
 
 namespace Laboration_2_Ordbehandling
 {
-	internal class WindowHandler
+	public class WindowHandler
 	{
 		private Main_Form MainWindow;
 
@@ -11,9 +11,14 @@ namespace Laboration_2_Ordbehandling
 			MainWindow = main_Form;
 		}
 
-		internal void AppendAsterix()
+		public void AppendAsterix()
 		{
 			MainWindow.Text = "*" + MainWindow.Text;
+		}
+
+		internal string GetTitle()
+		{
+			return MainWindow.Text.Split(' ')[0].Split('.')[0].Split('*')[1];
 		}
 	}
 }

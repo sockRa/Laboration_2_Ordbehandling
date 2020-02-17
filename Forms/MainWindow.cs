@@ -29,13 +29,15 @@ namespace Laboration_2_Ordbehandling
 			wHandler = new WindowHandler(this);
 			sHandler = new StringHandler(Rtb_Main);
 			osHandler = new OSHandler(saveFileDialog1);
+
+			//Set focus on textbox at startup
+			ActiveControl = Rtb_Main;
 		}
 
 		private void Rtb_Main_TextChanged(object sender, EventArgs e)
 		{
 			// Update the text in the textbox
 			sHandler.UpdateText();
-
 			// Add asterix to the filename if the file have been modified.
 			if (!TextHaveBeenModified)
 			{
@@ -50,6 +52,7 @@ namespace Laboration_2_Ordbehandling
 			if (TextHaveBeenModified)
 			{
 				//Display promt which asks the user for an action to take
+				MessageBox.Show("Vill du spara ändringarna för " + wHandler.GetTitle() + "?", "NotPad", MessageBoxButtons.YesNoCancel);
 			}
 		}
 	}
