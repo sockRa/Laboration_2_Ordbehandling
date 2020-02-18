@@ -84,6 +84,7 @@
 			this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
 			this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.SaveToolStripMenuItem.Text = "Spara";
+			this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
 			// 
 			// SaveAsToolStripMenuItem
 			// 
