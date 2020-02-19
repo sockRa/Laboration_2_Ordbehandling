@@ -24,12 +24,19 @@ namespace Laboration_2_Ordbehandling
 
 		private void Rtb_Main_TextChanged(object sender, EventArgs e)
 		{
+			//Update the word count etc
+			InformationUpdate();
 			// Add asterix to the filename if the file have been modified and it is not a new document
 			if (!NewDocument && !FileHaveBeenModified)
 			{
 				Text = "*" + Text;
 				FileHaveBeenModified = true;
 			}
+		}
+
+		private void InformationUpdate()
+		{
+			label1.Text += Rtb_Main.Text.Length.ToString();
 		}
 
 		private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)

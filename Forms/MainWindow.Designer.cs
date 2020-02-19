@@ -37,6 +37,14 @@
 			this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Rtb_Main = new System.Windows.Forms.RichTextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label_letters_with_space = new System.Windows.Forms.Label();
+			this.letters_with_no_space = new System.Windows.Forms.Label();
+			this.label_number_of_words = new System.Windows.Forms.Label();
+			this.label_number_of_rows = new System.Windows.Forms.Label();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -97,10 +105,58 @@
 			this.Rtb_Main.TabStop = false;
 			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
 			// 
+			// label1
+			// 
+			resources.ApplyResources(this.label1, "label1");
+			this.label1.Name = "label1";
+			// 
+			// label2
+			// 
+			resources.ApplyResources(this.label2, "label2");
+			this.label2.Name = "label2";
+			// 
+			// label3
+			// 
+			resources.ApplyResources(this.label3, "label3");
+			this.label3.Name = "label3";
+			// 
+			// label4
+			// 
+			resources.ApplyResources(this.label4, "label4");
+			this.label4.Name = "label4";
+			// 
+			// label_letters_with_space
+			// 
+			resources.ApplyResources(this.label_letters_with_space, "label_letters_with_space");
+			this.label_letters_with_space.Name = "label_letters_with_space";
+			// 
+			// letters_with_no_space
+			// 
+			resources.ApplyResources(this.letters_with_no_space, "letters_with_no_space");
+			this.letters_with_no_space.Name = "letters_with_no_space";
+			// 
+			// label_number_of_words
+			// 
+			resources.ApplyResources(this.label_number_of_words, "label_number_of_words");
+			this.label_number_of_words.Name = "label_number_of_words";
+			// 
+			// label_number_of_rows
+			// 
+			resources.ApplyResources(this.label_number_of_rows, "label_number_of_rows");
+			this.label_number_of_rows.Name = "label_number_of_rows";
+			// 
 			// Main_Form
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.label_number_of_rows);
+			this.Controls.Add(this.label_number_of_words);
+			this.Controls.Add(this.letters_with_no_space);
+			this.Controls.Add(this.label_letters_with_space);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.Rtb_Main);
 			this.Controls.Add(this.toolStrip1);
 			this.Name = "Main_Form";
@@ -122,6 +178,14 @@
 		private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
 		private System.Windows.Forms.RichTextBox Rtb_Main;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label_letters_with_space;
+		private System.Windows.Forms.Label letters_with_no_space;
+		private System.Windows.Forms.Label label_number_of_words;
+		private System.Windows.Forms.Label label_number_of_rows;
 	}
 }
 

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
@@ -14,6 +15,11 @@ namespace Laboration_2_Ordbehandling
 		private readonly string StandardFileName = "dok1.txt - NotPad";
 		public string CurrentFilePath { get; set; }
 		public string CurrentFileName { get; set; }
+
+		public int NumberOfLettersWithSpace { get; set; }
+		public int NumberOfLettersWithoutSpace { get; set; }
+		public int NumberOfWords { get; set; }
+		public int NumberOfRows { get; set; }
 
 		public CurrentDocumentHandler(RichTextBox rtb_Main, Main_Form main_Form)
 		{
