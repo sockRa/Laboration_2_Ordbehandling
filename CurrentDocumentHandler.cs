@@ -1,19 +1,19 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
 {
 	internal class CurrentDocumentHandler
 	{
-		private RichTextBox rtb_Main;
-		private Main_Form main_Form;
-		private OpenFileDialog openDialog;
-		private SaveFileDialog saveDialog;
-		private string DialogFilter;
+		private readonly RichTextBox rtb_Main;
+		private readonly Main_Form main_Form;
+		private readonly OpenFileDialog openDialog;
+		private readonly SaveFileDialog saveDialog;
+		private readonly string DialogFilter;
 
-		private string StandardFileName = "dok1.txt - NotPad";
-		private string CurrentFilePath { get; set; }
+		private readonly string StandardFileName = "dok1.txt - NotPad";
+		public string CurrentFilePath { get; set; }
+		public string CurrentFileName { get; set; }
 
 		public CurrentDocumentHandler(RichTextBox rtb_Main, Main_Form main_Form)
 		{
@@ -25,29 +25,13 @@ namespace Laboration_2_Ordbehandling
 
 			DialogFilter = "Text Files (*.txt)|*.txt";
 			CurrentFilePath = "";
+			CurrentFileName = "dok1.txt";
 
 			openDialog.Filter = DialogFilter;
 			saveDialog.Filter = DialogFilter;
 		}
 
-		public void MarkDocumentAsModified()
-		{
-			main_Form.Text = "*" + main_Form.Text;
-		}
-
-		internal string GetTitle()
-		{
-			try
-			{
-				return main_Form.Text.Split(' ')[0].Split('.')[0].Split('*')[1];
-			}
-			catch
-			{
-				return main_Form.Text.Split(' ')[0].Split('.')[0];
-			}
-		}
-
-		internal void SetDefaultWindowTitle()
+		internal void SetDefaultDocumentName()
 		{
 			main_Form.Text = StandardFileName;
 		}
@@ -57,23 +41,41 @@ namespace Laboration_2_Ordbehandling
 			main_Form.Text = title + " - NotPad";
 		}
 
-		public void NewTextFile()
+		public void CreateNewDocument()
 		{
 			rtb_Main.Text = "";
 			main_Form.FileHaveBeenModified = false;
 		}
 
-		internal void SaveChanges()
+		internal void SaveWithPromt()
 		{
-			if (CurrentFilePath != "")
-			{
-				File.WriteAllText(CurrentFilePath, rtb_Main.Text);
-			}
-			else if (saveDialog.ShowDialog() == DialogResult.OK)
+			if (saveDialog.ShowDialog() == DialogResult.OK)
 			{
 				File.WriteAllText(saveDialog.FileName, rtb_Main.Text);
-				CurrentFilePath = "";
+				CurrentFileName = Path.GetFileName(saveDialog.FileName);
+				CurrentFilePath = saveDialog.FileName;
 			}
+
+			SetDocumentTitle(CurrentFileName);
+		}
+
+		public void SaveWithoutPromt()
+		{
+			File.WriteAllText(CurrentFilePath, rtb_Main.Text);
+		}
+
+		internal void SaveDocument()
+		{
+			if (FileExists())
+			{
+				SaveWithoutPromt();
+			}
+			else
+			{
+				SaveWithPromt();
+			}
+			SetDocumentTitle(CurrentFileName);
+			main_Form.FileHaveBeenModified = false;
 		}
 
 		internal void OpenTextFile()
@@ -84,9 +86,17 @@ namespace Laboration_2_Ordbehandling
 				rtb_Main.Text = File.ReadAllText(openDialog.FileName);
 				//Set the appropiate window title based on the file name
 				SetDocumentTitle(openDialog.SafeFileName);
+				CurrentFileName = openDialog.SafeFileName;
 				//Save the current filepath
 				CurrentFilePath = openDialog.FileName;
 			}
+
+			main_Form.NewDocument = false;
+		}
+
+		public bool FileExists()
+		{
+			return CurrentFilePath != "";
 		}
 	}
 }

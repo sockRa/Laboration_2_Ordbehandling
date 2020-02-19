@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
@@ -15,7 +8,7 @@ namespace Laboration_2_Ordbehandling
 		private readonly CurrentDocumentHandler CDHandler;
 
 		public bool FileHaveBeenModified { get; set; }
-		private bool NewDocument { get; set; }
+		public bool NewDocument { get; set; }
 
 		public Main_Form()
 		{
@@ -34,7 +27,7 @@ namespace Laboration_2_Ordbehandling
 			// Add asterix to the filename if the file have been modified and it is not a new document
 			if (!NewDocument && !FileHaveBeenModified)
 			{
-				CDHandler.MarkDocumentAsModified();
+				Text = "*" + Text;
 				FileHaveBeenModified = true;
 			}
 		}
@@ -44,11 +37,13 @@ namespace Laboration_2_Ordbehandling
 			// If the text have been modified, we need to save it.
 			if (FileHaveBeenModified)
 			{
-				if (DisplaySaveFileDialog() == DialogResult.Yes)
+				var choice = DisplaySaveFileDialog(CDHandler.CurrentFilePath);
+
+				if (choice == DialogResult.Yes)
 				{
-					CDHandler.SaveChanges();
+					CDHandler.SaveDocument();
 				}
-				else if (DisplaySaveFileDialog() == DialogResult.Cancel)
+				else if (choice == DialogResult.Cancel)
 				{
 					//User press cancel so don't close the window.
 					e.Cancel = true;
@@ -56,45 +51,61 @@ namespace Laboration_2_Ordbehandling
 			}
 		}
 
-		private DialogResult DisplaySaveFileDialog()
+		public DialogResult DisplaySaveFileDialog(string title)
 		{
+			if (title?.Length == 0)
+			{
+				title = CDHandler.CurrentFileName;
+			}
 			//Display promt which asks the user for an action to take
-			return MessageBox.Show("Vill du spara ändringarna för " + CDHandler.GetTitle() + "?", "NotPad", MessageBoxButtons.YesNoCancel);
+			return MessageBox.Show("Vill du spara ändringarna för " + title + "?", "NotPad", MessageBoxButtons.YesNoCancel);
 		}
 
 		private void NewToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//SaveFileIfModified();
-		}
-
-		private void SaveFileIfModified()
-		{
-			if (FileHaveBeenModified)
+			if (FileHaveBeenModified && DisplaySaveFileDialog(CDHandler.CurrentFileName) == DialogResult.Yes)
 			{
-				if (DisplaySaveFileDialog() == DialogResult.Yes)
-				{
-					//Save changes before it is overwritten
-					CDHandler.SaveChanges();
-				}
-
-				CDHandler.NewTextFile();
-				CDHandler.SetDefaultWindowTitle();
-				FileHaveBeenModified = false;
+				//Save changes before it is overwritten
+				CDHandler.SaveDocument();
 			}
+
+			//If the file have not been modified, there is no need to save it.
+			//Just create a new one.
+			CDHandler.CreateNewDocument();
+			CDHandler.SetDefaultDocumentName();
+			FileHaveBeenModified = false;
 		}
 
 		private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			NewDocument = true;
 			//If text have been modified, give the user a chance to save it's work
-			SaveFileIfModified();
+			SaveDocumentIfModified();
+
 			CDHandler.OpenTextFile();
-			NewDocument = false;
 		}
 
 		private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			CDHandler.SaveChanges();
+			SaveDocumentIfModified();
+		}
+
+		private void SaveDocumentIfModified()
+		{
+			if (FileHaveBeenModified)
+			{
+				CDHandler.SaveDocument();
+			}
+		}
+
+		private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CDHandler.SaveWithPromt();
+		}
+
+		private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Windows.Forms.Application.Exit();
 		}
 	}
 }

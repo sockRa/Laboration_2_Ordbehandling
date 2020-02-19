@@ -44,11 +44,8 @@
 			// 
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+			resources.ApplyResources(this.toolStrip1, "toolStrip1");
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(601, 25);
-			this.toolStrip1.TabIndex = 0;
-			this.toolStrip1.Text = "toolStrip1";
 			// 
 			// toolStripDropDownButton1
 			// 
@@ -59,68 +56,54 @@
             this.SaveToolStripMenuItem,
             this.SaveAsToolStripMenuItem,
             this.CloseToolStripMenuItem});
-			this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-			this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			resources.ApplyResources(this.toolStripDropDownButton1, "toolStripDropDownButton1");
 			this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-			this.toolStripDropDownButton1.Size = new System.Drawing.Size(47, 22);
-			this.toolStripDropDownButton1.Text = "Arkiv";
 			// 
 			// NewToolStripMenuItem
 			// 
 			this.NewToolStripMenuItem.Name = "NewToolStripMenuItem";
-			this.NewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.NewToolStripMenuItem.Text = "Ny";
+			resources.ApplyResources(this.NewToolStripMenuItem, "NewToolStripMenuItem");
 			this.NewToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
 			// 
 			// OpenToolStripMenuItem
 			// 
 			this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-			this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.OpenToolStripMenuItem.Text = "Öppna";
+			resources.ApplyResources(this.OpenToolStripMenuItem, "OpenToolStripMenuItem");
 			this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
 			// 
 			// SaveToolStripMenuItem
 			// 
 			this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-			this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.SaveToolStripMenuItem.Text = "Spara";
+			resources.ApplyResources(this.SaveToolStripMenuItem, "SaveToolStripMenuItem");
 			this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
 			// 
 			// SaveAsToolStripMenuItem
 			// 
 			this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-			this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.SaveAsToolStripMenuItem.Text = "Spara som...";
+			resources.ApplyResources(this.SaveAsToolStripMenuItem, "SaveAsToolStripMenuItem");
+			this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
 			// 
 			// CloseToolStripMenuItem
 			// 
 			this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-			this.CloseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.CloseToolStripMenuItem.Text = "Stäng";
+			resources.ApplyResources(this.CloseToolStripMenuItem, "CloseToolStripMenuItem");
+			this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
 			// 
 			// Rtb_Main
 			// 
-			this.Rtb_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+			resources.ApplyResources(this.Rtb_Main, "Rtb_Main");
 			this.Rtb_Main.EnableAutoDragDrop = true;
-			this.Rtb_Main.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Rtb_Main.Location = new System.Drawing.Point(0, 25);
 			this.Rtb_Main.Name = "Rtb_Main";
-			this.Rtb_Main.Size = new System.Drawing.Size(601, 464);
-			this.Rtb_Main.TabIndex = 2;
 			this.Rtb_Main.TabStop = false;
-			this.Rtb_Main.Text = "";
 			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
 			// 
 			// Main_Form
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(601, 489);
 			this.Controls.Add(this.Rtb_Main);
 			this.Controls.Add(this.toolStrip1);
-			this.MinimumSize = new System.Drawing.Size(601, 464);
 			this.Name = "Main_Form";
-			this.Text = "dok1.txt - NotPad";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
