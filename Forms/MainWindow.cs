@@ -20,11 +20,47 @@ namespace Laboration_2_Ordbehandling
 
 			//Set focus on textbox at startup
 			ActiveControl = Rtb_Main;
+
+			//Allow drag and drop into richtextbox
+			Rtb_Main.AllowDrop = true;
+		}
+
+		private void Rtb_Main_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+				e.Effect = DragDropEffects.Copy;
+			else
+				e.Effect = DragDropEffects.None;
+		}
+
+		private void Rtb_Main_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+		{
+			int i;
+			string s;
+
+			//Get start position to drop the text.
+			i = Rtb_Main.SelectionStart;
+			s = Rtb_Main.Text.Substring(i);
+			Rtb_Main.Text = Rtb_Main.Text.Substring(0, i);
+
+			//Drop the text on to the richtextbox
+			string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+			foreach (string file in files)
+			{
+				MessageBox.Show(file);
+			}
+
+			// No button is pressed, create a new document with the dragged and dropped file.
+			CDHandler.SaveWithPromt();
+			CDHandler.ReadFileContent(files);
+
+			//Rtb_Main.Text += e.Data.GetData(DataFormats.Text).ToString();
+			//Rtb_Main.Text += s;
 		}
 
 		private void Rtb_Main_TextChanged(object sender, EventArgs e)
 		{
-			//Update the word count etc
+			//Update the word count, etc
 			InformationUpdate();
 			// Add asterix to the filename if the file have been modified and it is not a new document
 			if (!NewDocument && !FileHaveBeenModified)
@@ -69,7 +105,7 @@ namespace Laboration_2_Ordbehandling
 				}
 			}
 
-			//It is assume that letters with space include space as a character
+			//It is assume space is a letter
 			label_letters_with_space.Text = Rtb_Main.Text.Length.ToString();
 			label_letters_with_no_space.Text = letter.ToString();
 

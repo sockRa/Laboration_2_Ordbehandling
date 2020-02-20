@@ -100,10 +100,11 @@
 			// Rtb_Main
 			// 
 			resources.ApplyResources(this.Rtb_Main, "Rtb_Main");
-			this.Rtb_Main.EnableAutoDragDrop = true;
 			this.Rtb_Main.Name = "Rtb_Main";
 			this.Rtb_Main.TabStop = false;
 			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
+			this.Rtb_Main.DragEnter += new System.Windows.Forms.DragEventHandler(this.Rtb_Main_DragEnter);
+			this.Rtb_Main.DragDrop += new System.Windows.Forms.DragEventHandler(this.Rtb_Main_DragDrop);
 			// 
 			// label1
 			// 
@@ -147,6 +148,7 @@
 			// 
 			// Main_Form
 			// 
+			this.AllowDrop = true;
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.label_number_of_rows);

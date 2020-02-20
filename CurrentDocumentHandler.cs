@@ -53,6 +53,11 @@ namespace Laboration_2_Ordbehandling
 			main_Form.FileHaveBeenModified = false;
 		}
 
+		internal void ReadFileContent()
+		{
+			throw new NotImplementedException();
+		}
+
 		internal void SaveWithPromt()
 		{
 			if (saveDialog.ShowDialog() == DialogResult.OK)
