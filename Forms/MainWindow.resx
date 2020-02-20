@@ -122,31 +122,31 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="NewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="NewToolStripMenuItem.Text" xml:space="preserve">
     <value>Ny</value>
   </data>
   <data name="OpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="OpenToolStripMenuItem.Text" xml:space="preserve">
     <value>Öppna</value>
   </data>
   <data name="SaveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="SaveToolStripMenuItem.Text" xml:space="preserve">
     <value>Spara</value>
   </data>
   <data name="SaveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="SaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Spara som...</value>
   </data>
   <data name="CloseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>138, 22</value>
   </data>
   <data name="CloseToolStripMenuItem.Text" xml:space="preserve">
     <value>Stäng</value>
@@ -393,34 +393,34 @@
   <data name="&gt;&gt;label_letters_with_space.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="letters_with_no_space.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label_letters_with_no_space.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="letters_with_no_space.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="label_letters_with_no_space.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="letters_with_no_space.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label_letters_with_no_space.Location" type="System.Drawing.Point, System.Drawing">
     <value>224, 469</value>
   </data>
-  <data name="letters_with_no_space.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_letters_with_no_space.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 15</value>
   </data>
-  <data name="letters_with_no_space.TabIndex" type="System.Int32, mscorlib">
+  <data name="label_letters_with_no_space.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="letters_with_no_space.Text" xml:space="preserve">
+  <data name="label_letters_with_no_space.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;letters_with_no_space.Name" xml:space="preserve">
-    <value>letters_with_no_space</value>
+  <data name="&gt;&gt;label_letters_with_no_space.Name" xml:space="preserve">
+    <value>label_letters_with_no_space</value>
   </data>
-  <data name="&gt;&gt;letters_with_no_space.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_letters_with_no_space.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;letters_with_no_space.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label_letters_with_no_space.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;letters_with_no_space.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label_letters_with_no_space.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label_number_of_words.AutoSize" type="System.Boolean, mscorlib">

@@ -42,7 +42,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label_letters_with_space = new System.Windows.Forms.Label();
-			this.letters_with_no_space = new System.Windows.Forms.Label();
+			this.label_letters_with_no_space = new System.Windows.Forms.Label();
 			this.label_number_of_words = new System.Windows.Forms.Label();
 			this.label_number_of_rows = new System.Windows.Forms.Label();
 			this.toolStrip1.SuspendLayout();
@@ -130,10 +130,10 @@
 			resources.ApplyResources(this.label_letters_with_space, "label_letters_with_space");
 			this.label_letters_with_space.Name = "label_letters_with_space";
 			// 
-			// letters_with_no_space
+			// label_letters_with_no_space
 			// 
-			resources.ApplyResources(this.letters_with_no_space, "letters_with_no_space");
-			this.letters_with_no_space.Name = "letters_with_no_space";
+			resources.ApplyResources(this.label_letters_with_no_space, "label_letters_with_no_space");
+			this.label_letters_with_no_space.Name = "label_letters_with_no_space";
 			// 
 			// label_number_of_words
 			// 
@@ -151,7 +151,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.label_number_of_rows);
 			this.Controls.Add(this.label_number_of_words);
-			this.Controls.Add(this.letters_with_no_space);
+			this.Controls.Add(this.label_letters_with_no_space);
 			this.Controls.Add(this.label_letters_with_space);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
@@ -183,7 +183,7 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label_letters_with_space;
-		private System.Windows.Forms.Label letters_with_no_space;
+		private System.Windows.Forms.Label label_letters_with_no_space;
 		private System.Windows.Forms.Label label_number_of_words;
 		private System.Windows.Forms.Label label_number_of_rows;
 	}

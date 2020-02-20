@@ -32,11 +32,50 @@ namespace Laboration_2_Ordbehandling
 				Text = "*" + Text;
 				FileHaveBeenModified = true;
 			}
+
+			if (Rtb_Main.Text.Length == 0)
+			{
+				CDHandler.SetDefaultDocumentName();
+			}
 		}
 
 		private void InformationUpdate()
 		{
-			label1.Text += Rtb_Main.Text.Length.ToString();
+			int word, row, letter;
+			word = row = letter = 0;
+			bool NewWord = true;
+
+			foreach (char character in Rtb_Main.Text)
+			{
+				switch (character)
+				{
+					case ' ':
+						NewWord = true;
+						break;
+
+					case '\n':
+						row++;
+						break;
+
+					default:
+						if (NewWord)
+						{
+							word++;
+							NewWord = false;
+						}
+
+						letter++;
+						break;
+				}
+			}
+
+			//It is assume that letters with space include space as a character
+			label_letters_with_space.Text = Rtb_Main.Text.Length.ToString();
+			label_letters_with_no_space.Text = letter.ToString();
+
+			//+1 is because there is always atleast one row at startup.
+			label_number_of_rows.Text = (row + 1).ToString();
+			label_number_of_words.Text = word.ToString();
 		}
 
 		private void Main_Form_FormClosing(object sender, FormClosingEventArgs e)
