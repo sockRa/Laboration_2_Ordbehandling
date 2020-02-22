@@ -42,7 +42,7 @@ namespace Laboration_2_Ordbehandling
 			main_Form.Text = StandardFileName;
 		}
 
-		private void SetDocumentTitle(string title)
+		public void SetDocumentTitle(string title)
 		{
 			main_Form.Text = title + " - NotPad";
 		}
@@ -53,9 +53,14 @@ namespace Laboration_2_Ordbehandling
 			main_Form.FileHaveBeenModified = false;
 		}
 
-		internal void ReadFileContent()
+		internal string ReadFileContent(string path)
 		{
-			throw new NotImplementedException();
+			return File.ReadAllText(path);
+		}
+
+		internal void GetFileName(string file)
+		{
+			//Return the last split, which contains the filename
 		}
 
 		internal void SaveWithPromt()

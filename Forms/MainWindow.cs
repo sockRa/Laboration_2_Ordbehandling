@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
@@ -36,26 +37,68 @@ namespace Laboration_2_Ordbehandling
 		private void Rtb_Main_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
 		{
 			int i;
-			string s;
+			string subString;
+			string file;
 
 			//Get start position to drop the text.
 			i = Rtb_Main.SelectionStart;
-			s = Rtb_Main.Text.Substring(i);
+			subString = Rtb_Main.Text.Substring(i);
 			Rtb_Main.Text = Rtb_Main.Text.Substring(0, i);
 
-			//Drop the text on to the richtextbox
+			//Retrive the file name including path
 			string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-			foreach (string file in files)
-			{
-				MessageBox.Show(file);
-			}
+			file = files[0];
 
 			// No button is pressed, create a new document with the dragged and dropped file.
-			CDHandler.SaveWithPromt();
-			CDHandler.ReadFileContent(files);
+			//Rtb_Main.Text = CDHandler.ReadFileContent(file);
+			SetText(file);
+			//Place the cursor at the end of the text.
+			Rtb_Main.SelectionStart = Rtb_Main.Text.Length;
 
 			//Rtb_Main.Text += e.Data.GetData(DataFormats.Text).ToString();
 			//Rtb_Main.Text += s;
+		}
+
+		private void SetText(string filePath)
+		{
+			string documentText = CDHandler.ReadFileContent(filePath);
+			bool AllowText = true;
+
+			if ((ModifierKeys & Keys.Control) != 0)
+			{
+				Rtb_Main.Text += documentText;
+			}
+			else if ((ModifierKeys & Keys.Shift) != 0)
+			{
+				int i = Rtb_Main.SelectionStart;
+				string subString = Rtb_Main.Text.Substring(i);
+				Rtb_Main.Text = Rtb_Main.Text.Substring(0, i);
+
+				Rtb_Main.Text += documentText;
+				Rtb_Main.Text += subString;
+			}
+			else
+			{
+				if (FileHaveBeenModified)
+				{
+					var choice = DisplaySaveFileDialog(CDHandler.CurrentFilePath);
+
+					if (choice == DialogResult.Yes)
+					{
+						CDHandler.SaveDocument();
+					}
+					else if (choice == DialogResult.Cancel)
+					{
+						AllowText = false;
+					}
+				}
+
+				if (AllowText)
+				{
+					Rtb_Main.Text = documentText;
+					CDHandler.SetDocumentTitle(Path.GetFileName(filePath));
+				}
+			}
 		}
 
 		private void Rtb_Main_TextChanged(object sender, EventArgs e)

@@ -45,7 +45,9 @@
 			this.label_letters_with_no_space = new System.Windows.Forms.Label();
 			this.label_number_of_words = new System.Windows.Forms.Label();
 			this.label_number_of_rows = new System.Windows.Forms.Label();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.toolStrip1.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// toolStrip1
@@ -102,9 +104,9 @@
 			resources.ApplyResources(this.Rtb_Main, "Rtb_Main");
 			this.Rtb_Main.Name = "Rtb_Main";
 			this.Rtb_Main.TabStop = false;
-			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
-			this.Rtb_Main.DragEnter += new System.Windows.Forms.DragEventHandler(this.Rtb_Main_DragEnter);
 			this.Rtb_Main.DragDrop += new System.Windows.Forms.DragEventHandler(this.Rtb_Main_DragDrop);
+			this.Rtb_Main.DragEnter += new System.Windows.Forms.DragEventHandler(this.Rtb_Main_DragEnter);
+			this.Rtb_Main.TextChanged += new System.EventHandler(this.Rtb_Main_TextChanged);
 			// 
 			// label1
 			// 
@@ -146,25 +148,33 @@
 			resources.ApplyResources(this.label_number_of_rows, "label_number_of_rows");
 			this.label_number_of_rows.Name = "label_number_of_rows";
 			// 
+			// tableLayoutPanel1
+			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.label_number_of_rows, 3, 1);
+			this.tableLayoutPanel1.Controls.Add(this.label_letters_with_space, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.label4, 2, 1);
+			this.tableLayoutPanel1.Controls.Add(this.label_letters_with_no_space, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
+			this.tableLayoutPanel1.Controls.Add(this.label_number_of_words, 3, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			// 
 			// Main_Form
 			// 
 			this.AllowDrop = true;
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.label_number_of_rows);
-			this.Controls.Add(this.label_number_of_words);
-			this.Controls.Add(this.label_letters_with_no_space);
-			this.Controls.Add(this.label_letters_with_space);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.Rtb_Main);
 			this.Controls.Add(this.toolStrip1);
 			this.Name = "Main_Form";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -188,6 +198,7 @@
 		private System.Windows.Forms.Label label_letters_with_no_space;
 		private System.Windows.Forms.Label label_number_of_words;
 		private System.Windows.Forms.Label label_number_of_rows;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 	}
 }
 
