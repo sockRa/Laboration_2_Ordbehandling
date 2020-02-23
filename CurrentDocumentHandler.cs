@@ -1,118 +1,104 @@
-﻿using System;
+﻿using Laboration_2_Ordbehandling.Forms;
 using System.IO;
 using System.Windows.Forms;
 
 namespace Laboration_2_Ordbehandling
 {
-	internal class CurrentDocumentHandler
+	public class CurrentDocumentHandler
 	{
-		private readonly RichTextBox rtb_Main;
-		private readonly Main_Form main_Form;
-		private readonly OpenFileDialog openDialog;
-		private readonly SaveFileDialog saveDialog;
-		private readonly string DialogFilter;
+		private readonly MainForm _mainForm;
+		private readonly OpenFileDialog _openDialog;
+		private readonly RichTextBox _rtbMain;
+		private readonly SaveFileDialog _saveDialog;
+		private const string StandardFileName = "dok1.txt - NotPad";
 
-		private readonly string StandardFileName = "dok1.txt - NotPad";
-		public string CurrentFilePath { get; set; }
-		public string CurrentFileName { get; set; }
-
-		public int NumberOfLettersWithSpace { get; set; }
-		public int NumberOfLettersWithoutSpace { get; set; }
-		public int NumberOfWords { get; set; }
-		public int NumberOfRows { get; set; }
-
-		public CurrentDocumentHandler(RichTextBox rtb_Main, Main_Form main_Form)
+		public CurrentDocumentHandler(RichTextBox rtbMain, MainForm mainForm)
 		{
-			this.rtb_Main = rtb_Main;
-			this.main_Form = main_Form;
+			_rtbMain = rtbMain;
+			_mainForm = mainForm;
 
-			openDialog = new OpenFileDialog();
-			saveDialog = new SaveFileDialog();
+			_openDialog = new OpenFileDialog();
+			_saveDialog = new SaveFileDialog();
 
-			DialogFilter = "Text Files (*.txt)|*.txt";
+			const string dialogFilter = "Text Files (*.txt)|*.txt";
 			CurrentFilePath = "";
 			CurrentFileName = "dok1.txt";
 
-			openDialog.Filter = DialogFilter;
-			saveDialog.Filter = DialogFilter;
+			_openDialog.Filter = dialogFilter;
+			_saveDialog.Filter = dialogFilter;
 		}
 
-		internal void SetDefaultDocumentName()
+		public string CurrentFileName { get; private set; }
+		public string CurrentFilePath { get; set; }
+
+		public void CreateNewDocument()
 		{
-			main_Form.Text = StandardFileName;
+			_rtbMain.Text = "";
+			_mainForm.FileHaveBeenModified = false;
+		}
+
+		private bool FileExists()
+		{
+			return CurrentFilePath != "";
+		}
+
+		private void SaveWithoutPrompt()
+		{
+			File.WriteAllText(CurrentFilePath, _rtbMain.Text);
 		}
 
 		public void SetDocumentTitle(string title)
 		{
-			main_Form.Text = title + " - NotPad";
+			_mainForm.Text = title + " - NotPad";
 		}
 
-		public void CreateNewDocument()
+		internal void OpenTextFile()
 		{
-			rtb_Main.Text = "";
-			main_Form.FileHaveBeenModified = false;
-		}
-
-		internal string ReadFileContent(string path)
-		{
-			return File.ReadAllText(path);
-		}
-
-		internal void GetFileName(string file)
-		{
-			//Return the last split, which contains the filename
-		}
-
-		internal void SaveWithPromt()
-		{
-			if (saveDialog.ShowDialog() == DialogResult.OK)
+			if (_openDialog.ShowDialog() == DialogResult.OK)
 			{
-				File.WriteAllText(saveDialog.FileName, rtb_Main.Text);
-				CurrentFileName = Path.GetFileName(saveDialog.FileName);
-				CurrentFilePath = saveDialog.FileName;
+				//Read the text from the file and add it to the text box
+				_rtbMain.Text = File.ReadAllText(_openDialog.FileName);
+				//Set the appropriate window title based on the file name
+				SetDocumentTitle(_openDialog.SafeFileName);
+				CurrentFileName = _openDialog.SafeFileName;
+				//Save the current filepath
+				CurrentFilePath = _openDialog.FileName;
 			}
 
-			SetDocumentTitle(CurrentFileName);
+			_mainForm.NewDocument = false;
 		}
 
-		public void SaveWithoutPromt()
+		internal static string ReadFileContent(string path)
 		{
-			File.WriteAllText(CurrentFilePath, rtb_Main.Text);
+			return File.ReadAllText(path);
 		}
 
 		internal void SaveDocument()
 		{
 			if (FileExists())
 			{
-				SaveWithoutPromt();
+				SaveWithoutPrompt();
 			}
 			else
 			{
-				SaveWithPromt();
+				SaveWithPrompt();
 			}
 			SetDocumentTitle(CurrentFileName);
-			main_Form.FileHaveBeenModified = false;
+			_mainForm.FileHaveBeenModified = false;
 		}
 
-		internal void OpenTextFile()
+		internal void SaveWithPrompt()
 		{
-			if (openDialog.ShowDialog() == DialogResult.OK)
-			{
-				//Read the text from the file and add it to the textbox
-				rtb_Main.Text = File.ReadAllText(openDialog.FileName);
-				//Set the appropiate window title based on the file name
-				SetDocumentTitle(openDialog.SafeFileName);
-				CurrentFileName = openDialog.SafeFileName;
-				//Save the current filepath
-				CurrentFilePath = openDialog.FileName;
-			}
+			if (_saveDialog.ShowDialog() != DialogResult.OK) return;
 
-			main_Form.NewDocument = false;
+			File.WriteAllText(_saveDialog.FileName, _rtbMain.Text);
+			CurrentFileName = Path.GetFileName(_saveDialog.FileName);
+			CurrentFilePath = _saveDialog.FileName;
 		}
 
-		public bool FileExists()
+		internal void SetDefaultDocumentName()
 		{
-			return CurrentFilePath != "";
+			_mainForm.Text = StandardFileName;
 		}
 	}
 }

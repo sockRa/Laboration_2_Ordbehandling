@@ -1,6 +1,6 @@
-﻿namespace Laboration_2_Ordbehandling
+﻿namespace Laboration_2_Ordbehandling.Forms
 {
-	partial class Main_Form
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
 			this.NewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,7 +161,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.label_number_of_words, 3, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			// 
-			// Main_Form
+			// MainForm
 			// 
 			this.AllowDrop = true;
 			resources.ApplyResources(this, "$this");
@@ -169,7 +169,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.Rtb_Main);
 			this.Controls.Add(this.toolStrip1);
-			this.Name = "Main_Form";
+			this.Name = "MainForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form_FormClosing);
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();

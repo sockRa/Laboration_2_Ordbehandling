@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Laboration_2_Ordbehandling.Forms;
 
 namespace Laboration_2_Ordbehandling
 {
@@ -13,7 +14,7 @@ namespace Laboration_2_Ordbehandling
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Main_Form());
+			Application.Run(new MainForm());
 		}
 	}
 }
